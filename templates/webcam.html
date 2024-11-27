@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam Processing</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e9ecef;
+        }
+        .container {
+            margin-top: 50px;
+            background-color: #ffffff;
+            border -radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h1 {
+            color: #343a40;
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center mt-5">
+        <h1>Processing Webcam Feed</h1>
+        <div class="mt-4">
+            <img src="/webcam_feed" alt="Webcam Feed" class="img-fluid rounded">
+        </div>
+        <form action="/stop_webcam" method="POST" class="mt-4">
+            <button type="submit" class="btn btn-danger">Stop Webcam</button>
+        </form>
+        <a href="/" class="btn btn-secondary mt-2">Go Back</a>
+    </div>
+</body>
+</html>
