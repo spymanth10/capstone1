@@ -1,0 +1,2 @@
+Build:  docker build -t hc-img .
+Create Cointainer: docker run -it --name test-app -p 5000:5000 -v /shared:/uploads hc-img

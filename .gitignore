@@ -16,9 +16,13 @@ env/
 # Results and Uploads
 uploads/
 static/results/
-
+tests/
 # Dependency directories
 node_modules/
 
 # Misc
 .DS_Store
+requirements.txt
+Jenkinsfile
+test_app.py
+run_on_windows.py

@@ -1,13 +1,11 @@
-from flask import Flask, render_template, request, send_file, Response, url_for
+from flask import Flask, render_template, request, send_file, Response
 import cv2
 import os
 import pandas as pd
-import numpy as np
 from head_detection import HeadDetector
-import threading
 import queue
 import uuid
-
+# share windows camera feed to some http/ socket port. access that socket port from docker
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['RESULT_FOLDER'] = 'static/results'  # Change to static folder for direct web access
@@ -26,7 +24,7 @@ head_detector = HeadDetector()
 
 def generate_frames():
     global is_streaming, webcam_results
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(0)  # Replace by `localhost:6000/get_video``
     frame_number = 0
 
     while is_streaming:
@@ -55,7 +53,7 @@ def generate_frames():
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('home.html')  #change
 
 @app.route('/process', methods=['POST'])
 def process():
@@ -64,11 +62,11 @@ def process():
     if input_type == 'image':
         # Image upload processing
         if 'image' not in request.files:
-            return render_template('error.html', message="No file uploaded")
+            return render_template('error.html', message="No file uploaded") #change
         
         file = request.files['image']
         if file.filename == '':
-            return render_template('error.html', message="No selected file")
+            return render_template('error.html', message="No selected file") #change
         
         # Generate unique filename
         unique_filename = str(uuid.uuid4()) + '_' + file.filename
@@ -133,5 +131,7 @@ def download_file(filename):
         as_attachment=True
     )
 
+# if __name__ == '__main__':
+#     app.run(debug=True)
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
