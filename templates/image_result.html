@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Detection Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container result-container">
+        <h1>Image Detection Results</h1>
+        <p>Total Heads Detected: <strong>{{ head_count }}</strong></p>
+        <img src="{{ url_for('static', filename='results/' + annotated_image) }}" 
+             alt="Annotated Image" 
+             class="result-image">
+        <div class="actions">
+            <a href="{{ url_for('download_file', filename='output_image_results.csv') }}" class="button">Download Results CSV</a>
+            <a href="{{ url_for('home') }}" class="button">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Webcam Head Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Webcam Head Detection</h1>
+        <img src="{{ url_for('video_feed') }}" class="video-stream">
+        <div class="actions">
+            <a href="{{ url_for('stop_webcam') }}" class="button stop-button">Stop Webcam</a>
+        </div>
+    </div>
+</body>
+</html>

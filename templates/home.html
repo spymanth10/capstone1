@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Head Detection App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Head Detection Application</h1>
+        <form action="/process" method="post" enctype="multipart/form-data">
+            <div class="input-type">
+                <input type="radio" id="image" name="input_type" value="image" required>
+                <label for="image">Upload Image</label>
+                
+                <input type="radio" id="webcam" name="input_type" value="webcam">
+                <label for="webcam">Use Webcam</label>
+            </div>
+
+            <div id="image-upload" style="display:none;">
+                <input type="file" name="image" accept=".png,.jpg,.jpeg">
+            </div>
+
+            <button type="submit">Process</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageRadio = document.getElementById('image');
+            const webcamRadio = document.getElementById('webcam');
+            const imageUpload = document.getElementById('image-upload');
+
+            imageRadio.addEventListener('change', function() {
+                imageUpload.style.display = this.checked ? 'block' : 'none';
+            });
+
+            webcamRadio.addEventListener('change', function() {
+                imageUpload.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
